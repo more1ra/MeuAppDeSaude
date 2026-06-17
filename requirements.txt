@@ -1,0 +1,28 @@
+# Dependências Principales (React Native & Expo)
+expo==54.0.35
+react==19.1.0
+react-native==0.81.5
+
+# Navegação
+@react-navigation/native
+@react-navigation/native-stack
+react-native-screens==4.16.0
+react-native-safe-area-context==5.6.0
+
+# Gerenciamento de Estado (Local Storage)
+zustand
+
+# Ícones e Interface
+@expo/vector-icons
+expo-status-bar==3.0.9
+
+# Tipagens e TypeScript
+typescript==5.9.2
+@types/react==19.1.10
+@types/react-native
+
+# Nota sobre o ecossistema:
+# Em projetos Node.js / React Native, todas essas bibliotecas e suas 
+# versões exatas já ficam salvas automaticamente no arquivo "package.json".
+# Para instalar tudo em um novo computador, basta rodar o comando:
+# npm install
