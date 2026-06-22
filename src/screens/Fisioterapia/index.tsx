@@ -19,12 +19,12 @@ export default function TelaFisioterapia({ navigation }: Props) {
   const handleSaveDor = () => {
     const nivel = parseInt(nivelDor);
     if (isNaN(nivel) || nivel < 0 || nivel > 10) {
-      Alert.alert('Erro', 'Por favor, insira um nÃ­vel de dor vÃ¡lido (0 a 10).');
+      Alert.alert('Erro', 'Por favor, insira um nível de dor válido (0 a 10).');
       return;
     }
     
     addRegistroDor({ nivel });
-    Alert.alert('Salvo', 'NÃ­vel de dor registrado. Melhoras!');
+    Alert.alert('Salvo', 'Nível de dor registrado. Melhoras!');
     setNivelDor('');
   };
 
@@ -32,14 +32,14 @@ export default function TelaFisioterapia({ navigation }: Props) {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scroll}>
         <Text style={styles.title}>Fisioterapia</Text>
-        <Text style={styles.subtitle}>Gerencie suas dores e exercÃ­cios terapÃªuticos.</Text>
+        <Text style={styles.subtitle}>Gerencie suas dores e exercícios terapêuticos.</Text>
 
         <View style={styles.card}>
           <Text style={styles.sectionTitle}>Registro de Dor (EVA)</Text>
           <Text style={styles.infoText}>Mapeie a intensidade da dor hoje (0 a 10).</Text>
           <TextInput placeholderTextColor="#999" 
             style={styles.input} 
-            placeholder="NÃ­vel de 0 a 10" 
+            placeholder="Nível de 0 a 10" 
             keyboardType="numeric"
             value={nivelDor}
             onChangeText={setNivelDor}
@@ -50,22 +50,22 @@ export default function TelaFisioterapia({ navigation }: Props) {
         </View>
 
         <View style={styles.historyContainer}>
-          <Text style={styles.historyTitle}>EvoluÃ§Ã£o da Dor</Text>
+          <Text style={styles.historyTitle}>Evolução da Dor</Text>
           {historicoDor.length === 0 ? (
             <Text style={{color: '#666'}}>Nenhum registro ainda.</Text>
           ) : (
             historicoDor.map((h) => (
               <Text key={h.id} style={{color: '#333', marginBottom: 4}}>
-                {new Date(h.data).toLocaleDateString()}: Dor nÃ­vel {h.nivel}
+                {new Date(h.data).toLocaleDateString()}: Dor nível {h.nivel}
               </Text>
             ))
           )}
         </View>
 
         <View style={styles.card}>
-          <Text style={styles.sectionTitle}>Plano TerapÃªutico</Text>
+          <Text style={styles.sectionTitle}>Plano Terapêutico</Text>
           <TouchableOpacity style={styles.secondaryButton}>
-            <Text style={styles.secondaryButtonText}>ExercÃ­cios de Hoje</Text>
+            <Text style={styles.secondaryButtonText}>Exercícios de Hoje</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.secondaryButton}>
             <Text style={styles.secondaryButtonText}>Lembretes de Postura</Text>

@@ -22,14 +22,14 @@ import {
   PerfilUsuario
 } from '../types';
 
-// FunÃ§Ã£o auxiliar para lidar com erros
+// Função auxiliar para lidar com erros
 const handleError = (error: any, operation: string) => {
-  console.error(`Erro na operaÃ§Ã£o ${operation}: `, error);
+  console.error(`Erro na operação ${operation}: `, error);
   throw error;
 };
 
 // ==========================================
-// USUÃRIO / PERFIL
+// USUÁRIO / PERFIL
 // ==========================================
 export const salvarPerfil = async (userId: string, perfil: Partial<PerfilUsuario>) => {
   try {

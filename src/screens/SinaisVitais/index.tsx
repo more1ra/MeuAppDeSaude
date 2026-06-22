@@ -35,7 +35,7 @@ export default function TelaSinaisVitais({ navigation }: Props) {
       <ScrollView contentContainerStyle={styles.scroll}>
         <View style={styles.header}>
           <Text style={styles.title}>Sinais Vitais</Text>
-          <Text style={styles.subtitle}>Registre seus batimentos, pressÃ£o arterial e nÃ­veis de glicose recentes.</Text>
+          <Text style={styles.subtitle}>Registre seus batimentos, pressão arterial e níveis de glicose recentes.</Text>
         </View>
 
         <View style={styles.formGroup}>
@@ -61,7 +61,7 @@ export default function TelaSinaisVitais({ navigation }: Props) {
         </View>
 
         <View style={styles.formGroup}>
-          <Text style={styles.label}>PressÃ£o Arterial (mmHg)</Text>
+          <Text style={styles.label}>Pressão Arterial (mmHg)</Text>
           <TextInput placeholderTextColor="#999"
             style={styles.input}
             placeholder="Ex: 120/80"
@@ -77,13 +77,13 @@ export default function TelaSinaisVitais({ navigation }: Props) {
           </TouchableOpacity>
 
           <View style={styles.historyContainer}>
-            <Text style={styles.historyTitle}>HistÃ³rico Recente</Text>
+            <Text style={styles.historyTitle}>Histórico Recente</Text>
             {historico.length === 0 ? (
               <Text style={{color: '#666'}}>Nenhum registro ainda.</Text>
             ) : (
               historico.map((h, index) => (
                 <Text key={h.id} style={{color: '#333', marginBottom: 4}}>
-                  {new Date(h.data).toLocaleTimeString()}: BPM {h.bpm} | Glicose {h.glicose} | PressÃ£o {h.pressao || '--'}
+                  {new Date(h.data).toLocaleTimeString()}: BPM {h.bpm} | Glicose {h.glicose} | Pressão {h.pressao || '--'}
                 </Text>
               ))
             )}

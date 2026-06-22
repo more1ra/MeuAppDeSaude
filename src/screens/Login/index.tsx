@@ -23,7 +23,7 @@ export default function LoginScreen({ navigation }: Props) {
     if (emailOrCpf.trim().toLowerCase() === 'admin' && password.trim() === 'admin') {
       navigation.replace('Inicial');
     } else {
-      Alert.alert('Erro', 'Credenciais invÃ¡lidas. Use admin/admin para entrar.');
+      Alert.alert('Erro', 'Credenciais inválidas. Use admin/admin para entrar.');
     }
   };
 
@@ -35,7 +35,7 @@ export default function LoginScreen({ navigation }: Props) {
       >
         <View style={styles.content}>
           <Text style={styles.title}>Bem-vindo!</Text>
-          <Text style={styles.subtitle}>FaÃ§a login para acessar seus dados de saÃºde.</Text>
+          <Text style={styles.subtitle}>Faça login para acessar seus dados de saúde.</Text>
 
           <View style={styles.formGroup}>
             <Text style={styles.label}>E-mail ou CPF</Text>
@@ -65,7 +65,7 @@ export default function LoginScreen({ navigation }: Props) {
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.registerLink} onPress={() => navigation.navigate('Cadastro')}>
-            <Text style={styles.registerLinkText}>NÃ£o tem uma conta? <Text style={styles.boldText}>Cadastre-se</Text></Text>
+            <Text style={styles.registerLinkText}>Não tem uma conta? <Text style={styles.boldText}>Cadastre-se</Text></Text>
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>

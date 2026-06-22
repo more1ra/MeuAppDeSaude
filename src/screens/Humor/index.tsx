@@ -15,10 +15,10 @@ export default function MoodScreen({ navigation }: Props) {
   const [selectedMood, setSelectedMood] = useState<string | null>(null);
 
   const moods = [
-    { id: 'feliz', label: 'Feliz', emoji: 'ðŸ˜Š' },
-    { id: 'triste', label: 'Triste', emoji: 'ðŸ˜¢' },
-    { id: 'nervoso', label: 'Nervoso', emoji: 'ðŸ˜ ' },
-    { id: 'ansioso', label: 'Ansioso', emoji: 'ðŸ˜°' },
+    { id: 'feliz', label: 'Feliz', emoji: '😊' },
+    { id: 'triste', label: 'Triste', emoji: '😢' },
+    { id: 'nervoso', label: 'Nervoso', emoji: '😠' },
+    { id: 'ansioso', label: 'Ansioso', emoji: '😰' },
   ];
 
 
@@ -38,7 +38,7 @@ export default function MoodScreen({ navigation }: Props) {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scroll}>
-        <Text style={styles.title}>Como vocÃª estÃ¡?</Text>
+        <Text style={styles.title}>Como você está?</Text>
 
         <Text style={styles.sectionTitle}>Seu Humor Hoje</Text>
         <View style={styles.moodGrid}>
@@ -64,7 +64,7 @@ export default function MoodScreen({ navigation }: Props) {
         </TouchableOpacity>
 
         <View style={styles.historyContainer}>
-          <Text style={styles.historyTitle}>HistÃ³rico Recente</Text>
+          <Text style={styles.historyTitle}>Histórico Recente</Text>
           {historico.length === 0 ? (
             <Text style={{color: '#666'}}>Nenhum registro ainda.</Text>
           ) : (

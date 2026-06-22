@@ -47,7 +47,7 @@ export default function ProfileScreen({ navigation }: Props) {
 
   const handleSave = () => {
     if (!age || !weight || !height || !gender) {
-      Alert.alert('AtenÃ§Ã£o', 'Preencha todos os campos do perfil.');
+      Alert.alert('Atenção', 'Preencha todos os campos do perfil.');
       return;
     }
     Alert.alert('Sucesso', 'Perfil salvo com sucesso!', [
@@ -59,7 +59,7 @@ export default function ProfileScreen({ navigation }: Props) {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scroll}>
         <Text style={styles.title}>Meu Perfil</Text>
-        <Text style={styles.subtitle}>Complete seus dados de saÃºde para uma experiÃªncia personalizada.</Text>
+        <Text style={styles.subtitle}>Complete seus dados de saúde para uma experiência personalizada.</Text>
 
         <View style={styles.formGroup}>
           <Text style={styles.label}>Idade</Text>

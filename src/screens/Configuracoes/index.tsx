@@ -24,7 +24,7 @@ export default function TelaConfiguracoes({ navigation }: Props) {
     const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (permissionResult.granted === false) {
-      Alert.alert('PermissÃ£o Negada', 'Precisamos de permissÃ£o para acessar sua galeria.');
+      Alert.alert('Permissão Negada', 'Precisamos de permissão para acessar sua galeria.');
       return;
     }
 
@@ -42,7 +42,7 @@ export default function TelaConfiguracoes({ navigation }: Props) {
 
   const handleSave = () => {
     updatePerfil({ nome, telefone, fotoUri });
-    Alert.alert('Sucesso', 'ConfiguraÃ§Ãµes salvas com sucesso!', [
+    Alert.alert('Sucesso', 'Configurações salvas com sucesso!', [
       { text: 'OK', onPress: () => navigation.goBack() }
     ]);
   };
@@ -50,7 +50,7 @@ export default function TelaConfiguracoes({ navigation }: Props) {
   const handleRecoverPassword = () => {
     Alert.alert(
       'Recuperar Senha',
-      'Um e-mail com as instruÃ§Ãµes para redefiniÃ§Ã£o de senha foi enviado para o seu endereÃ§o cadastrado.',
+      'Um e-mail com as instruções para redefinição de senha foi enviado para o seu endereço cadastrado.',
       [{ text: 'Entendi' }]
     );
   };
@@ -58,7 +58,7 @@ export default function TelaConfiguracoes({ navigation }: Props) {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scroll}>
-        <Text style={styles.title}>ConfiguraÃ§Ãµes</Text>
+        <Text style={styles.title}>Configurações</Text>
 
         <TouchableOpacity style={styles.photoContainer} onPress={handlePickImage}>
           {fotoUri ? (
@@ -93,7 +93,7 @@ export default function TelaConfiguracoes({ navigation }: Props) {
         </View>
 
         <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
-          <Text style={styles.saveButtonText}>Salvar AlteraÃ§Ãµes</Text>
+          <Text style={styles.saveButtonText}>Salvar Alterações</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.recoverButton} onPress={handleRecoverPassword}>

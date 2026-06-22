@@ -20,21 +20,21 @@ export default function TelaEducacaoFisica({ navigation }: Props) {
   const addTreino = useStore((state) => state.addTreino);
 
   const activities = [
-    'Ativo (Pratico ExercÃ­cios)',
+    'Ativo (Pratico Exercícios)',
     'De Vez em Quando',
-    'NÃ£o Pratico'
+    'Não Pratico'
   ];
 
   const biblioteca = [
-    { nome: 'Caminhada RÃ¡pida', desc: 'Caminhe em um ritmo acelerado por 30 minutos. Ã“timo para a saÃºde do coraÃ§Ã£o e perda de calorias.' },
-    { nome: 'Alongamento Matinal', desc: 'Estique os braÃ§os, pernas e costas logo apÃ³s acordar. Melhora a flexibilidade e postura diÃ¡ria.' },
-    { nome: 'Agachamento Simples', desc: 'FaÃ§a 3 sÃ©ries de 12 repetiÃ§Ãµes. Mantenha as costas retas e o peso nos calcanhares.' },
-    { nome: 'FlexÃ£o de BraÃ§os', desc: 'Apoie os joelhos no chÃ£o se for iniciante. Tente fazer 3 sÃ©ries do mÃ¡ximo que conseguir.' },
+    { nome: 'Caminhada Rápida', desc: 'Caminhe em um ritmo acelerado por 30 minutos. Ótimo para a saúde do coração e perda de calorias.' },
+    { nome: 'Alongamento Matinal', desc: 'Estique os braços, pernas e costas logo após acordar. Melhora a flexibilidade e postura diária.' },
+    { nome: 'Agachamento Simples', desc: 'Faça 3 séries de 12 repetições. Mantenha as costas retas e o peso nos calcanhares.' },
+    { nome: 'Flexão de Braços', desc: 'Apoie os joelhos no chão se for iniciante. Tente fazer 3 séries do máximo que conseguir.' },
   ];
 
   const handleRegistrar = () => {
     if (!desc) {
-      Alert.alert('Erro', 'Por favor, descreva o treino que vocÃª realizou.');
+      Alert.alert('Erro', 'Por favor, descreva o treino que você realizou.');
       return;
     }
     addTreino({ descricao: desc });
@@ -42,16 +42,16 @@ export default function TelaEducacaoFisica({ navigation }: Props) {
     setDesc('');
   };
 
-  const treinosNaSemana = treinos.length % 6; // LÃ³gica mock para exibir na progress bar
+  const treinosNaSemana = treinos.length % 6; // Lógica mock para exibir na progress bar
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scroll}>
-        <Text style={styles.title}>EducaÃ§Ã£o FÃ­sica</Text>
-        <Text style={styles.subtitle}>Acompanhe seus treinos e gasto calÃ³rico.</Text>
+        <Text style={styles.title}>Educação Física</Text>
+        <Text style={styles.subtitle}>Acompanhe seus treinos e gasto calórico.</Text>
 
         <View style={styles.card}>
-          <Text style={styles.sectionTitle}>PrÃ¡tica de ExercÃ­cios FÃ­sicos</Text>
+          <Text style={styles.sectionTitle}>Prática de Exercícios Físicos</Text>
           <View style={styles.activityList}>
             {activities.map((activity) => (
               <TouchableOpacity
@@ -95,9 +95,9 @@ export default function TelaEducacaoFisica({ navigation }: Props) {
         </View>
 
         <View style={styles.historyContainer}>
-          <Text style={styles.historyTitle}>Ãšltimos Treinos</Text>
+          <Text style={styles.historyTitle}>Últimos Treinos</Text>
           {treinos.length === 0 ? (
-            <Text style={{color: '#666'}}>VocÃª ainda nÃ£o registrou treinos.</Text>
+            <Text style={{color: '#666'}}>Você ainda não registrou treinos.</Text>
           ) : (
             treinos.map((t) => (
               <Text key={t.id} style={{color: '#333', marginBottom: 4}}>
@@ -108,7 +108,7 @@ export default function TelaEducacaoFisica({ navigation }: Props) {
         </View>
 
         <TouchableOpacity style={styles.actionButtonSecondary} onPress={() => setModalVisible(true)}>
-          <Text style={styles.actionButtonTextSecondary}>Biblioteca de ExercÃ­cios</Text>
+          <Text style={styles.actionButtonTextSecondary}>Biblioteca de Exercícios</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
@@ -119,7 +119,7 @@ export default function TelaEducacaoFisica({ navigation }: Props) {
       <Modal visible={modalVisible} animationType="slide" transparent={true}>
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>Biblioteca de ExercÃ­cios</Text>
+            <Text style={styles.modalTitle}>Biblioteca de Exercícios</Text>
             <ScrollView>
               {biblioteca.map((item, index) => (
                 <View key={index} style={styles.exerciseItem}>

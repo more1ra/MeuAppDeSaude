@@ -25,12 +25,12 @@ export default function TelaFarmacia({ navigation }: Props) {
 
   const handleSave = () => {
     if (!nome || !dosagem) {
-      Alert.alert('Erro', 'Nome e dosagem sÃ£o obrigatÃ³rios.');
+      Alert.alert('Erro', 'Nome e dosagem são obrigatórios.');
       return;
     }
 
     if (nome.toLowerCase().includes('aspirina') || nome.toLowerCase() === 'aas') {
-      Alert.alert('AtenÃ§Ã£o: InteraÃ§Ã£o', 'Cuidado ao misturar com anticoagulantes!');
+      Alert.alert('Atenção: Interação', 'Cuidado ao misturar com anticoagulantes!');
     }
 
     addMedicamento({ nome, dosagem, forma, estoque });
@@ -40,7 +40,7 @@ export default function TelaFarmacia({ navigation }: Props) {
 
   const handleGeneratePDF = async () => {
     if (medicamentos.length === 0) {
-      Alert.alert('AtenÃ§Ã£o', 'VocÃª nÃ£o possui medicamentos cadastrados para gerar o relatÃ³rio.');
+      Alert.alert('Atenção', 'Você não possui medicamentos cadastrados para gerar o relatório.');
       return;
     }
 
@@ -65,7 +65,7 @@ export default function TelaFarmacia({ navigation }: Props) {
           </style>
         </head>
         <body>
-          <h1>RelatÃ³rio de Medicamentos (FarmÃ¡cia)</h1>
+          <h1>Relatório de Medicamentos (Farmácia)</h1>
           <p>Confira abaixo a lista atualizada de medicamentos em estoque do paciente:</p>
           <table>
             <tr>
@@ -86,10 +86,10 @@ export default function TelaFarmacia({ navigation }: Props) {
       if (isSharingAvailable) {
         await Sharing.shareAsync(uri);
       } else {
-        Alert.alert('Aviso', 'O compartilhamento nÃ£o estÃ¡ disponÃ­vel neste dispositivo.');
+        Alert.alert('Aviso', 'O compartilhamento não está disponível neste dispositivo.');
       }
     } catch (error) {
-      Alert.alert('Erro', 'NÃ£o foi possÃ­vel gerar o PDF.');
+      Alert.alert('Erro', 'Não foi possível gerar o PDF.');
     }
   };
 
@@ -126,7 +126,7 @@ export default function TelaFarmacia({ navigation }: Props) {
       ) : (
         <View style={styles.listContainer}>
           <View style={styles.headerRow}>
-            <Text style={styles.title}>FarmÃ¡cia</Text>
+            <Text style={styles.title}>Farmácia</Text>
             <View style={{flexDirection: 'row', gap: 10}}>
               <TouchableOpacity style={styles.pdfButton} onPress={handleGeneratePDF}>
                 <Text style={styles.addButtonText}>PDF</Text>

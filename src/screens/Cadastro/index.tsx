@@ -18,7 +18,7 @@ export default function RegisterScreen({ navigation }: Props) {
 
   const handleRegister = () => {
     if (password !== confirmPassword) {
-      Alert.alert('Erro', 'As senhas nÃ£o coincidem.');
+      Alert.alert('Erro', 'As senhas não coincidem.');
       return;
     }
     // Simulate registration
@@ -31,7 +31,7 @@ export default function RegisterScreen({ navigation }: Props) {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scroll}>
         <Text style={styles.title}>Criar Conta</Text>
-        <Text style={styles.subtitle}>Preencha seus dados para comeÃ§ar.</Text>
+        <Text style={styles.subtitle}>Preencha seus dados para começar.</Text>
 
         <View style={styles.formGroup}>
           <Text style={styles.label}>E-mail ou CPF</Text>
@@ -82,7 +82,7 @@ export default function RegisterScreen({ navigation }: Props) {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.backLink} onPress={() => navigation.goBack()}>
-          <Text style={styles.backLinkText}>JÃ¡ tem uma conta? <Text style={styles.boldText}>FaÃ§a Login</Text></Text>
+          <Text style={styles.backLinkText}>Já tem uma conta? <Text style={styles.boldText}>Faça Login</Text></Text>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>

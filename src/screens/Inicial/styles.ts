@@ -42,12 +42,12 @@ export const styles = StyleSheet.create({
   },
   card: {
     width: '48%', // 48% width leaves a 4% gap (half of the previous 8% gap)
-    aspectRatio: 1, // MantÃ©m o botÃ£o quadrado e se adapta a qualquer tela Android
+    aspectRatio: 1, // Mantém o botão quadrado e se adapta a qualquer tela Android
     borderRadius: 20,
     padding: 16,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 16, // Metade do espaÃ§amento vertical tambÃ©m
+    marginBottom: 16, // Metade do espaçamento vertical também
     elevation: 4,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },

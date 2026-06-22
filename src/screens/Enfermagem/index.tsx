@@ -21,17 +21,17 @@ export default function TelaEnfermagem({ navigation }: Props) {
 
   const handleSave = () => {
     if (!temperatura || !pressao || !spo2) {
-      Alert.alert('AtenÃ§Ã£o', 'Preencha todos os campos vitais.');
+      Alert.alert('Atenção', 'Preencha todos os campos vitais.');
       return;
     }
 
     const temp = parseFloat(temperatura.replace(',', '.'));
     if (temp > 37.8) {
-      Alert.alert('Alerta!', 'Febre detectada. Considere procurar atendimento mÃ©dico.');
+      Alert.alert('Alerta!', 'Febre detectada. Considere procurar atendimento médico.');
     } else if (temp < 35.0) {
       Alert.alert('Alerta!', 'Hipotermia detectada. Procure aquecimento imediato.');
     } else {
-      Alert.alert('Sucesso', 'Sinais vitais de enfermagem salvos com sucesso no histÃ³rico!');
+      Alert.alert('Sucesso', 'Sinais vitais de enfermagem salvos com sucesso no histórico!');
     }
 
     addSinalEnfermagem({ temperatura, pressao, spo2 });
@@ -47,7 +47,7 @@ export default function TelaEnfermagem({ navigation }: Props) {
         <Text style={styles.subtitle}>Registro completo de sinais vitais e curativos.</Text>
 
         <View style={styles.card}>
-          <Text style={styles.sectionTitle}>Sinais Vitais AvanÃ§ados</Text>
+          <Text style={styles.sectionTitle}>Sinais Vitais Avançados</Text>
           
           <View style={styles.formGroup}>
             <Text style={styles.label}>Temperatura (Â°C)</Text>
@@ -55,12 +55,12 @@ export default function TelaEnfermagem({ navigation }: Props) {
           </View>
 
           <View style={styles.formGroup}>
-            <Text style={styles.label}>PressÃ£o Arterial (mmHg)</Text>
+            <Text style={styles.label}>Pressão Arterial (mmHg)</Text>
             <TextInput placeholderTextColor="#999" style={styles.input} placeholder="Ex: 120/80" value={pressao} onChangeText={setPressao} />
           </View>
 
           <View style={styles.formGroup}>
-            <Text style={styles.label}>SaturaÃ§Ã£o de OxigÃªnio (SpO2 %)</Text>
+            <Text style={styles.label}>Saturação de Oxigênio (SpO2 %)</Text>
             <TextInput placeholderTextColor="#999" style={styles.input} placeholder="Ex: 98" keyboardType="numeric" value={spo2} onChangeText={setSpo2} />
           </View>
 
@@ -70,7 +70,7 @@ export default function TelaEnfermagem({ navigation }: Props) {
         </View>
 
         <View style={styles.historyContainer}>
-          <Text style={styles.historyTitle}>HistÃ³rico Recente</Text>
+          <Text style={styles.historyTitle}>Histórico Recente</Text>
           {historico.length === 0 ? (
             <Text style={{color: '#666'}}>Nenhum registro ainda.</Text>
           ) : (
@@ -83,7 +83,7 @@ export default function TelaEnfermagem({ navigation }: Props) {
         </View>
 
         <TouchableOpacity style={styles.actionButton}>
-          <Text style={styles.actionButtonText}>Abrir CartÃ£o de Vacinas</Text>
+          <Text style={styles.actionButtonText}>Abrir Cartão de Vacinas</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.actionButton}>

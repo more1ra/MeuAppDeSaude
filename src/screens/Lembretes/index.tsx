@@ -31,12 +31,12 @@ export default function TelaLembretes({ navigation }: Props) {
   const [modalVisible, setModalVisible] = useState(false);
   const [title, setTitle] = useState('');
   const [time, setTime] = useState('');
-  const [type, setType] = useState('SaÃƒÂºde');
+  const [type, setType] = useState('Saúde');
   
   const categories = [
-    { name: 'SaÃƒÂºde', color: '#17a2b8' },
-    { name: 'RemÃƒÂ©dio', color: '#dc3545' },
-    { name: 'ExercÃƒÂ­cio', color: '#28a745' },
+    { name: 'Saúde', color: '#17a2b8' },
+    { name: 'Remédio', color: '#dc3545' },
+    { name: 'Exercício', color: '#28a745' },
     { name: 'Higiene', color: '#0056b3' }
   ];
 
@@ -44,7 +44,7 @@ export default function TelaLembretes({ navigation }: Props) {
     async function requestPermissions() {
       const { status } = await Notifications.requestPermissionsAsync();
       if (status !== 'granted') {
-        Alert.alert('Aviso', 'As notificaÃƒÂ§ÃƒÂµes estÃƒÂ£o desativadas. VocÃƒÂª nÃƒÂ£o receberÃƒÂ¡ alertas dos seus lembretes.');
+        Alert.alert('Aviso', 'As notificações estão desativadas. Você não receberá alertas dos seus lembretes.');
       }
     }
     requestPermissions();
@@ -52,13 +52,13 @@ export default function TelaLembretes({ navigation }: Props) {
 
   const handleSaveNovo = async () => {
     if (!title || !time) {
-      Alert.alert('AtenÃƒÂ§ÃƒÂ£o', 'Preencha o tÃƒÂ­tulo e o horÃƒÂ¡rio.');
+      Alert.alert('Atenção', 'Preencha o título e o horário.');
       return;
     }
 
     const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
     if (!timeRegex.test(time)) {
-      Alert.alert('Erro', 'Formato de hora invÃƒÂ¡lido. Use HH:MM (ex: 14:30).');
+      Alert.alert('Erro', 'Formato de hora inválido. Use HH:MM (ex: 14:30).');
       return;
     }
 
@@ -81,7 +81,7 @@ export default function TelaLembretes({ navigation }: Props) {
       await Notifications.scheduleNotificationAsync({
         content: {
           title: "Lembrete: " + novoLembrete.title,
-          body: "EstÃƒÂ¡ na hora do seu lembrete: " + novoLembrete.type,
+          body: "Está na hora do seu lembrete: " + novoLembrete.type,
         },
         trigger: {
           type: Notifications.SchedulableTriggerInputTypes.DAILY,
@@ -89,10 +89,10 @@ export default function TelaLembretes({ navigation }: Props) {
           minute: minute,
         },
       });
-      Alert.alert('Sucesso', `Lembrete agendado para tocar todos os dias ÃƒÂ s ${time}.`);
+      Alert.alert('Sucesso', `Lembrete agendado para tocar todos os dias às ${time}.`);
     } catch (e) {
       console.log('Notification error:', e);
-      Alert.alert('Aviso', 'Lembrete salvo, mas as notificaÃƒÂ§ÃƒÂµes nativas podem nÃƒÂ£o funcionar na Web.');
+      Alert.alert('Aviso', 'Lembrete salvo, mas as notificações nativas podem não funcionar na Web.');
     }
 
     setModalVisible(false);
@@ -119,7 +119,7 @@ export default function TelaLembretes({ navigation }: Props) {
           <Text style={styles.timeText}>{item.time}</Text>
         </View>
         <TouchableOpacity style={styles.deleteButton} onPress={() => handleDelete(item.id)}>
-          <Text style={styles.deleteButtonText}>Ã¢Å“â€¢</Text>
+          <Text style={styles.deleteButtonText}>❌</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -140,7 +140,7 @@ export default function TelaLembretes({ navigation }: Props) {
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
         contentContainerStyle={styles.listContent}
-        ListEmptyComponent={<Text style={styles.empty}>VocÃƒÂª ainda nÃƒÂ£o possui lembretes.</Text>}
+        ListEmptyComponent={<Text style={styles.empty}>Você ainda não possui lembretes.</Text>}
       />
 
       <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
@@ -152,7 +152,7 @@ export default function TelaLembretes({ navigation }: Props) {
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Novo Lembrete</Text>
             
-            <Text style={styles.label}>TÃƒÂ­tulo</Text>
+            <Text style={styles.label}>Título</Text>
             <TextInput placeholderTextColor="#999" 
               style={styles.input} 
               placeholder="Ex: Tomar Losartana" 
@@ -160,7 +160,7 @@ export default function TelaLembretes({ navigation }: Props) {
               onChangeText={setTitle} 
             />
 
-            <Text style={styles.label}>HorÃƒÂ¡rio (HH:MM)</Text>
+            <Text style={styles.label}>Horário (HH:MM)</Text>
             <TextInput placeholderTextColor="#999" 
               style={styles.input} 
               placeholder="Ex: 08:30" 

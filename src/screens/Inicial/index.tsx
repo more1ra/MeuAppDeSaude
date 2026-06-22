@@ -23,7 +23,7 @@ export default function TelaInicial({ navigation }: Props) {
       <ScrollView contentContainerStyle={styles.scroll}>
         <View style={styles.header}>
           <View style={styles.headerTop}>
-            <Text style={styles.title}>OlÃ¡, {userName}!</Text>
+            <Text style={styles.title}>Olá, {userName}!</Text>
             <TouchableOpacity style={styles.settingsButton} onPress={() => navigation.navigate('Configuracoes')}>
               {perfil?.fotoUri ? (
                 <Image source={{ uri: perfil.fotoUri }} style={{ width: 44, height: 44, borderRadius: 22 }} />
@@ -32,7 +32,7 @@ export default function TelaInicial({ navigation }: Props) {
               )}
             </TouchableOpacity>
           </View>
-          <Text style={styles.subtitle}>Como vocÃª estÃ¡ se sentindo hoje?</Text>
+          <Text style={styles.subtitle}>Como você está se sentindo hoje?</Text>
         </View>
 
         <View style={styles.grid}>
@@ -41,7 +41,7 @@ export default function TelaInicial({ navigation }: Props) {
             onPress={() => navigation.navigate('Humor')}
             activeOpacity={0.8}
           >
-            <Text style={styles.emoji}>ðŸ˜Š</Text>
+            <Text style={styles.emoji}>😊</Text>
             <Text style={styles.cardText}>Humor & Atividade</Text>
           </TouchableOpacity>
 
@@ -51,7 +51,7 @@ export default function TelaInicial({ navigation }: Props) {
             activeOpacity={0.8}
           >
             <FontAwesome5 name="heartbeat" size={48} color="#fff" style={styles.icon} />
-            <Text style={styles.cardText}>Sinais Vitais (BPM/ Glicose/ PressÃ£o)</Text>
+            <Text style={styles.cardText}>Sinais Vitais (BPM/ Glicose/ Pressão)</Text>
           </TouchableOpacity>
 
           <TouchableOpacity 
@@ -78,7 +78,7 @@ export default function TelaInicial({ navigation }: Props) {
             activeOpacity={0.8}
           >
             <MaterialCommunityIcons name="pill" size={54} color="#fff" style={styles.icon} />
-            <Text style={styles.cardText}>FarmÃ¡cia</Text>
+            <Text style={styles.cardText}>Farmácia</Text>
           </TouchableOpacity>
 
           <TouchableOpacity 
@@ -96,7 +96,7 @@ export default function TelaInicial({ navigation }: Props) {
             activeOpacity={0.8}
           >
             <MaterialCommunityIcons name="run" size={54} color="#fff" style={styles.icon} />
-            <Text style={styles.cardText}>Ed. FÃ­sica</Text>
+            <Text style={styles.cardText}>Ed. Física</Text>
           </TouchableOpacity>
 
           <TouchableOpacity 
