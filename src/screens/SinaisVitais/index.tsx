@@ -71,8 +71,8 @@ export default function TelaSinaisVitais({ navigation }: Props) {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
-          <Text style={styles.title}>Sinais Vitais</Text>
-          <Text style={styles.subtitle}>Acompanhe seus indicadores de saúde para um melhor controle diário</Text>
+          <Text style={styles.title}>Sinais Vitais (Enfermagem)</Text>
+          <Text style={styles.subtitle}>Acompanhe seus indicadores físicos e de enfermagem para controle diário</Text>
         </View>
 
         <View style={styles.card}>

@@ -28,7 +28,8 @@ export default function MoodScreen({ navigation }: Props) {
   const [selectedActivity, setSelectedActivity] = useState<string | null>(null);
 
   const addHumor = useStore((state) => state.addHumor);
-  const historico = useStore((state) => state.humorHistorico);
+  const humorHistorico = useStore((state) => state.humorHistorico);
+  const sinaisVitais = useStore((state) => state.sinaisVitais);
 
   const handleSave = () => {
     if (!selectedMood) {
@@ -36,7 +37,6 @@ export default function MoodScreen({ navigation }: Props) {
       return;
     }
     
-    // Check if the user selected an activity. It's highly recommended for psychology baseline.
     if (!selectedActivity) {
       Alert.alert(
         'Faltou um detalhe',
@@ -67,13 +67,19 @@ export default function MoodScreen({ navigation }: Props) {
     return MOODS.find(m => m.id === moodId) || MOODS[0];
   };
 
+  // Merge histories and sort desc
+  const mergedHistory = [
+    ...humorHistorico.map(h => ({ type: 'humor', data: h.data, item: h })),
+    ...sinaisVitais.map(s => ({ type: 'sinal', data: s.data, item: s }))
+  ].sort((a, b) => new Date(b.data).getTime() - new Date(a.data).getTime());
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         
         <View style={styles.header}>
-          <Text style={styles.title}>Como você está?</Text>
-          <Text style={styles.subtitle}>Registre seu humor para acompanharmos seu bem-estar</Text>
+          <Text style={styles.title}>Saúde Mental (Psicologia & Humor)</Text>
+          <Text style={styles.subtitle}>Acompanhe seu bem-estar psicológico e físico</Text>
         </View>
 
         <View style={styles.moodGrid}>
@@ -144,35 +150,56 @@ export default function MoodScreen({ navigation }: Props) {
           activeOpacity={0.8}
         >
           <Text style={[styles.saveButtonText, !selectedMood && { color: '#A0A0AB' }]}>
-            Salvar Registro
+            Salvar Registro Psicológico
           </Text>
         </TouchableOpacity>
 
         <View style={styles.historyContainer}>
-          <Text style={styles.historyTitle}>Histórico Recente</Text>
+          <Text style={styles.historyTitle}>Linha do Tempo (Humor & Sinais)</Text>
           
-          {historico.length === 0 ? (
-            <Text style={styles.emptyHistory}>Você ainda não registrou seu humor.</Text>
+          {mergedHistory.length === 0 ? (
+            <Text style={styles.emptyHistory}>Você ainda não possui registros.</Text>
           ) : (
-            historico.slice(0, 5).map((h) => {
-              const moodConfig = getMoodConfig(h.moodId);
-              
-              return (
-                <View key={h.id} style={styles.historyCard}>
-                  <View style={[styles.historyEmojiContainer, { backgroundColor: moodConfig.bgColor }]}>
-                    <Text style={styles.historyEmoji}>{moodConfig.emoji}</Text>
+            mergedHistory.slice(0, 8).map((record) => {
+              if (record.type === 'humor') {
+                const h = record.item as any;
+                const moodConfig = getMoodConfig(h.moodId);
+                return (
+                  <View key={`humor-${h.id}`} style={styles.historyCard}>
+                    <View style={[styles.historyEmojiContainer, { backgroundColor: moodConfig.bgColor }]}>
+                      <Text style={styles.historyEmoji}>{moodConfig.emoji}</Text>
+                    </View>
+                    <View style={styles.historyContent}>
+                      <Text style={styles.historyMoodName}>{moodConfig.label}</Text>
+                      <Text style={styles.historyDate}>
+                        {new Date(h.data).toLocaleDateString('pt-BR')} às {new Date(h.data).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}
+                      </Text>
+                      {h.activity ? (
+                        <Text style={styles.historyActivity}>Influência: {h.activity}</Text>
+                      ) : null}
+                    </View>
                   </View>
-                  <View style={styles.historyContent}>
-                    <Text style={styles.historyMoodName}>{moodConfig.label}</Text>
-                    <Text style={styles.historyDate}>
-                      {new Date(h.data).toLocaleDateString('pt-BR')}
-                    </Text>
-                    {h.activity ? (
-                      <Text style={styles.historyActivity}>Influência: {h.activity}</Text>
-                    ) : null}
+                );
+              } else {
+                const s = record.item as any;
+                return (
+                  <View key={`sinal-${s.id}`} style={styles.historyCard}>
+                    <View style={[styles.historyEmojiContainer, { backgroundColor: '#F0F0F5' }]}>
+                      <Text style={styles.historyEmoji}>🩺</Text>
+                    </View>
+                    <View style={styles.historyContent}>
+                      <Text style={styles.historyMoodName}>Sinais Vitais</Text>
+                      <Text style={styles.historyDate}>
+                        {new Date(s.data).toLocaleDateString('pt-BR')} às {new Date(s.data).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}
+                      </Text>
+                      <Text style={styles.historyActivity}>
+                        ❤️ {s.bpm} | 🩸 {s.glicose} | 🩺 {s.pressao}
+                        {s.oxigenacao ? ` | 🫁 ${s.oxigenacao}%` : ''}
+                      </Text>
+                    </View>
                   </View>
-                </View>
-              )
+                );
+              }
             })
           )}
         </View>
