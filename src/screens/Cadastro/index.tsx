@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, SafeAreaView, ScrollView, Alert, Image } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList } from '../../navigation/AppNavigator';
 import { useStore } from '../../store/useStore';
 import { styles } from './styles';
@@ -39,6 +40,12 @@ export default function RegisterScreen({ navigation }: Props) {
 
   return (
     <SafeAreaView style={styles.container}>
+      <TouchableOpacity 
+        style={{ position: 'absolute', top: 50, left: 20, zIndex: 10, padding: 10 }} 
+        onPress={() => navigation.goBack()}
+      >
+        <Ionicons name="arrow-back" size={28} color="#333" />
+      </TouchableOpacity>
       <ScrollView contentContainerStyle={styles.scroll}>
         <View style={{ alignItems: 'center', marginBottom: 16 }}>
           <Image 
