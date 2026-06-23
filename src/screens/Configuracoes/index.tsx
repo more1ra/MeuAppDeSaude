@@ -14,7 +14,7 @@ interface Props {
 }
 
 export default function TelaConfiguracoes({ navigation }: Props) {
-  const { perfil, updatePerfil } = useStore();
+  const { perfil, updatePerfil, logout } = useStore();
   
   const [nome, setNome] = useState(perfil?.nome || '');
   const [telefone, setTelefone] = useState(perfil?.telefone || '');
@@ -65,6 +65,7 @@ export default function TelaConfiguracoes({ navigation }: Props) {
           text: 'Sair', 
           style: 'destructive',
           onPress: () => {
+            logout();
             navigation.reset({
               index: 0,
               routes: [{ name: 'Login' }],

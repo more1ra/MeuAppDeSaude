@@ -1,7 +1,8 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, SafeAreaView, ScrollView, Alert } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/AppNavigator';
+import { useStore } from '../../store/useStore';
 import { styles } from './styles';
 
 type RegisterScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Cadastro'>;
@@ -11,17 +12,26 @@ interface Props {
 }
 
 export default function RegisterScreen({ navigation }: Props) {
+  const { updatePerfil } = useStore();
   const [emailOrCpf, setEmailOrCpf] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleRegister = () => {
+    if (!emailOrCpf || !phone || !password || !confirmPassword) {
+      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+      return;
+    }
+
     if (password !== confirmPassword) {
       Alert.alert('Erro', 'As senhas não coincidem.');
       return;
     }
-    // Simulate registration
+
+    // Salva os dados de perfil
+    updatePerfil({ telefone: phone });
+
     Alert.alert('Sucesso', 'Cadastro realizado!', [
       { text: 'OK', onPress: () => navigation.navigate('Perfil') }
     ]);
