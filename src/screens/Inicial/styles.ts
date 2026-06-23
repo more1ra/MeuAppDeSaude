@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8F9FA',
   },
   scroll: {
     padding: 20,
@@ -24,16 +23,16 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 34,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#fff',
   },
   settingsButton: {
-    backgroundColor: '#e9ecef',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
     padding: 10,
     borderRadius: 30,
   },
   subtitle: {
     fontSize: 18,
-    color: '#666',
+    color: '#e0e0e0',
   },
   grid: {
     flexDirection: 'row',
