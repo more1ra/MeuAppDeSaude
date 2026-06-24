@@ -42,7 +42,7 @@
 > [!WARNING]
 > ## 🩺 Enfermagem (RF22–RF28)
 
-- ✅ **RF22:** Registro de sinais vitais completos: temperatura corporal, pressão arterial (sistólica/diastólica), saturação de oxigênio (SpO2), além de BPM e glicose já existentes
+- ✅ **RF22:** Registro de sinais vitais completos: temperatura corporal, pressão arterial (sistólica/diastólica), saturação de oxigênio (SpO2), além de BPM e glicose já existentes. Ao salvar, exibir também no histórico da tela de humor.
 - ✅ **RF23:** Alertas de valores fora do intervalo de referência para cada sinal vital, com orientação de procurar atendimento
 - ❌ **RF24:** Cartão de vacinação digital: registro de vacinas tomadas, datas e doses, com alerta de próxima dose
 - ❌ **RF25:** Registro de curativos e feridas: descrição, foto (opcional), evolução — útil para pacientes com diabetes ou pós-operatório
@@ -108,3 +108,4 @@ Todos estes ainda demandam uma infraestrutura mais profunda e não estão totalm
 - ❌ **RNF12:** Termos de aceite — Exibição obrigatória dos termos de uso e política de privacidade no primeiro acesso, com registro de data/hora da aceitação
 - ❌ **RNF13:** Auditoria — Log de alterações em dados sensíveis (medicamentos, sinais vitais) com data, hora e identificador do usuário
 - ⚠️ **RNF14:** Tamanho do app — Pacote de instalação inicial máximo de 50MB para facilitar download em conexões limitadas
+- ❌ **RNF15:** Refatoração de UI — Mesclar telas do aplicativo que possuem comportamentos e componentes repetitivos para otimizar a manutenção e o reuso
